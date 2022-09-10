@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var nombre = window.prompt('cual es su nombre')
+        document.write(`${nombre.length} <br>`)
+        document.write(`Su nombre es: ${nombre}, y tiene ${nombre.length} letras <br> `)
+        document.write(`${nombre}, su nombre en mayucula es ${nombre.toUpperCase()}<br>`)
+
+        var n1 = 1570.5
+        document.write(n1.toLocaleString('pt-BR', {style: 'currency',currency: 'BRL'}))
+        document.write(`<br>${n1} <br>`)
+        document.write(`${n1.toFixed(10)}<br>`)
+        document.write(`${n1.toFixed(2).replace('.',',')}`)
+       
+    </script>
+</body>
+</html>
