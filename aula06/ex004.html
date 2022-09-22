@@ -8,7 +8,10 @@
 </head>
 <body>
     <script>
+        window.confirm('usted tiene mas de 20 años')
+        window.alert('estas apunto de entrar a configuraciones')
         var nombre = window.prompt('cual es su nombre')
+        var apellido = window.prompt('Cual es tu apellido')
         document.write(`${nombre.length} <br>`)
         document.write(`Su nombre es: ${nombre}, y tiene ${nombre.length} letras <br> `)
         document.write(`${nombre}, su nombre en mayucula es ${nombre.toUpperCase()}<br>`)
@@ -17,8 +20,8 @@
         document.write(n1.toLocaleString('pt-BR', {style: 'currency',currency: 'BRL'}))
         document.write(`<br>${n1} <br>`)
         document.write(`${n1.toFixed(10)}<br>`)
-        document.write(`${n1.toFixed(2).replace('.',',')}`)
-       
+        document.write(`${n1.toFixed(2).replace('.',',')} <br>`)
+        document.write(`hola ${nombre.toLocaleUpperCase()}, tu apellido es: ${apellido.toLocaleUpperCase()}`)
     </script>
 </body>
 </html>
