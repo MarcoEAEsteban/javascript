@@ -5,10 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Primeros pasos con Dom</title>
+    <style>
+        body{
+            background-color: rgb(171, 171, 235);
+            color: white;
+            font: normal 18pt Arial;
+        }
+    </style>
 </head>
 <body>
-    <h1>Iniciando estudios en DOM</h1>
+    <h1 id="titulo">Iniciando estudios en DOM</h1>
     <p>Aqui vai o resultado</p>
-    <div>clique em mi</div>
+    <p>Aprendiendo a usar o <strong>DOM</strong> em javaScript.</p>
+    <div id="msg">clique em mi</div>
+
+    <script>
+
+        var cuerpo = window.document.body
+        var p1 = window.document.getElementsByTagName('p')[0]
+        window.document.write('esta escrito asi: ' + p1.innerText)
+        cuerpo.style.background = 'black'
+        p1.style.color = 'blue'
+        var d = window.document.getElementById('msg')
+        d.style.background = 'green'
+        d.innerText ='loco loco loco'
+        var p = window.document.querySelector('h1#titulo')
+        p.style.background= 'red'
+        p.innerHTML = 'hola'
+    </script>
 </body>
 </html>
