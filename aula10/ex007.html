@@ -37,7 +37,15 @@
             var n1 = Number(tn1.value)
             var n2 = Number(tn2.value)
             var s = n1 + n2
-            res.innerHTML = `La suma de ${n1} mas ${n2} es igual a ${s}`
+
+            if(n1<0){
+                res.innerHTML = "suma invalida"
+            } else{
+               
+                res.innerHTML = `La suma de ${n1} mas ${n2} es igual a ${s}`
+
+            }
+            
         }
     </script>
 </body>

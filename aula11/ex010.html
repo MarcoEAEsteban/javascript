@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>De que pais es?</title>
+    
+</head>
+<body>
+    <h1>Cual es tu pais?</h1>
+    De que pais eres? : <input type="text" name="pais" id="pais">
+    <input type="button" value="verificar" onclick="verificar()">
+    <div id="res">
+        Respuesta:
+    </div>
+    <script>
+        
+        function verificar(){
+            var pais = window.document.getElementById('pais').value
+            var res = window.document.getElementById('res')
+           
+            res.innerHTML = `<p>viviendo en:<strong> ${pais}</strong> </p>`
+            if(pais == "peru"){
+            res.innerHTML +='usted es peruano'
+            }else{
+            res.innerHTML +='usted es estrangero'
+            }
+        }
+    </script>
+</body>
+</html>
