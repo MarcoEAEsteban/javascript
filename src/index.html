@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
-    
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="imagenes/favicon.ico" type="image/x-icon">
+    <title>Super Mario Bros</title>
+    <link rel="stylesheet" href="css/recet.css">
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/responsivo.css">
 
-    <video class="video" autoplay loop muted >
-        <source src="videos/video-mario.mp4" ti>
-    </video>
+</head>
+
+<body>
+    
+    <div class="fondo-video">
+        <video class="video" autoplay loop muted >
+            <source src="videos/video-mario.mp4" ti>
+        </video>
+    </div>
 
     <header class="cabecalho">
         <a href="">
@@ -20,8 +31,8 @@
         </a>
         <nav>
             <ul class="menu">
-                <li>Home</li>
-                <li>Detalles</li>
+                <li><a href="#">Home</a></li>
+                <li><a href="">Detalles</a></li>
             </ul>
         </nav>
     </header>
@@ -32,7 +43,9 @@
 
             <img class="imagem-titulo" src="imagenes/titulo.png" alt="titulo: Super Mario Bros">
             <p class="descricao">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam provident aliquid quam eos officia magni at, odio inventore, maxime dolores obcaecati amet nobis placeat corporis facilis culpa et, unde recusandae.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam provident aliquid quam eos officia magni
+                at, odio inventore, maxime dolores obcaecati amet nobis placeat corporis facilis culpa et, unde
+                recusandae. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel iste ea dolorem? Reiciendis quaerat ut rerum consequuntur aliquam accusantium temporibus nulla iste nesciunt ex, laudantium assumenda facere! Qui, perspiciatis impedit?
             </p>
 
             <button class="boton-trailer">Veja o trailer</button>
@@ -40,8 +53,18 @@
         </div>
 
         <img class="mario" src="imagenes/super-mario-chars.png" alt="Imagen de super mario y sus amigos">
-       
+
+        <div class="modal">
+            <div class="conteudo-modal">
+                <spam class="fechar-modal">x</spam>
+                <iframe src="https://www.youtube.com/embed/Cb4WV4aXBpk" id="video" width="560" height="315" title="Trailer oficial" frameborder="1"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+
     </main>
-  
+
+    <script src="js/index.js"></script>
+
 </body>
+
 </html>

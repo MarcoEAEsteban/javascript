@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sumando Vumeros</title>
+    <style>
+        body{
+            font: normal 18pt Arial;
+        }
+        input{
+            font: normal 18pt Arial;
+            width: 100px;  
+        }
+        div#res{
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>sumando valores</h1>
+    <input type="number" name="" id="txtn1"> +
+    <input type="number" name="" id="txtn2">
+    <input type="button" value="sumar" onclick="sumar()">
+    <div id="res">Resultado</div>
+
+    <script>
+
+        function sumar(){
+            var t1 = window.document.getElementById('txtn1')
+            var t2 = window.document.querySelector('input#txtn2')
+            var res = window.document.getElementById('res')
+
+            var n1 = Number(t1.value)
+            var n2 = Number(t2.value)
+            var s = n1 + n2
+            res.innerHTML = `La suma de ${n1} + ${n2} es igual a <strong>${s}</strong>`
+        }
+
+    </script>
+</body>
+</html>
