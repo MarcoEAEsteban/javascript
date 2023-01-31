@@ -1,0 +1,30 @@
+body{
+   
+    background-color: blueviolet;
+}
+
+section{
+    background-color: aqua;
+    width: 500px;
+    height: 500px;
+    margin: auto;
+    border-radius: 20px;
+    padding: 30px;
+}
+
+div{
+    margin: 10px;
+}
+
+input{
+    width: 200px;
+    height: 20px;
+    border: 1px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.336);
+   
+}
+#boton{
+    width: 80px;
+    height: 20px;
+}
