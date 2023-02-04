@@ -1,0 +1,36 @@
+body{
+    background-color: rgba(142, 123, 160, 0.849);
+    
+}
+
+form{
+    background-color: white;
+    width: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.452);
+    margin: auto;
+}
+
+
+
+table{
+    border-collapse: collapse;
+    margin: auto;
+}
+
+td,th{
+    border: 1px solid;
+    width: 200px;
+    height: 30px;
+    
+}
+
+dl{
+    border: 2px solid;
+}
+
+dd,dt{
+    border: 2px solid;
+    margin-left: 0px;
+}
