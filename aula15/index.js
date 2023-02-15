@@ -1,3 +1,4 @@
+
 let palNueva = document.getElementById('agregar')
 let lista = []
 let boton = document.getElementById('botagregar')
