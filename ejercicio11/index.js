@@ -32,6 +32,7 @@ function adicionar(){
         let item = document.createElement('option')
         item.innerHTML = `valor ${numero.value} adicionado`
         lista.appendChild(item)
+        respuesta.innerHTML = ''
 
        
     }else {
@@ -50,8 +51,27 @@ function resultado(){
     }else {
         let tot = valores.length
 
+        let mayor = valores[0]
+        let menor = valores[0]
+        let suma = 0
+        let media = 0
+
+        for(let pos in valores){
+            suma += valores[pos]
+            if(valores[pos] > mayor)
+                mayor = valores[pos]
+            if(valores[pos] < menor)
+                menor = valores[pos]
+        }
+
+        media = suma / tot
+
         respuesta.innerHTML = ''
         respuesta.innerHTML += `<p>En total, tenemos ${tot} numeros cadastrados</p>`
+        respuesta.innerHTML += `<p>EL mayor valor informado  es ${mayor}.</p>`
+        respuesta.innerHTML += `<p>El menos valor informado es ${menor}</p>`
+        respuesta.innerHTML += `<p>La suma de todos los valores es ${suma}</p>`
+        respuesta.innerHTML += `<p>El promedio de los valores es ${media}</p>`
 
     }
 }
