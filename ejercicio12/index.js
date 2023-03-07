@@ -16,7 +16,6 @@ for(let pos in aproductos){
 }
 
 function cambia(){
-    
     let pro = iproductos.options[iproductos.selectedIndex]
     let produ = pro.value
     let numero =Number(aproductos.indexOf(produ))
@@ -26,11 +25,8 @@ function cambia(){
     for(let posci in cosa){
         let isubOpciones = document.createElement('option')
         isubproductos.appendChild(isubOpciones) 
-        isubOpciones.innerHTML = cosa[posci] 
-        
+        isubOpciones.innerHTML = cosa[posci]  
     }
-    
-
 }
 
 
