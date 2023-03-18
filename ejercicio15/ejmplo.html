@@ -7,8 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Fundamentos JavaScript</h1>
+    <h1 onclick="clicar()">Fundamentos JavaScript</h1>
+    <div id="res">
+
+    </div>
     <script>
+        let res = document.getElementById('res')
         const colores = ['rojo','verde','azul']
         document.write(colores)
 
@@ -19,8 +23,47 @@
         
         const jon = {
             nombre: 'jon',
+            apellido: 'mircha',
+            edad: 35,
+            pasatiempos: ['correr', 'Hacer ejericio', 'Dar clases'],
+            contacto: {
+                email: 'jonmircha@gmail.com',
+                twitter: '@jonmircha',
+                movil: '52 155209847'
+            },
+            saludar: function(){
+                this.pasatiempos.forEach(function(valores,posciciones){
+                    let lista = `<li id="${posciciones}">${valores}</li>`
+                    document.write(lista)
+                })
+            },
+            listas:function(){
+                document.write(`<ol><li>${this.edad}</li></ol>`)
+            }
 
         }
+        function clicar(){
+            jon.listas()
+        }
+        //console.log(jon['nombre'])
+        //console.log(jon.nombre)
+        //console.log(jon.pasatiempos[1])
+        //console.log(jon.contacto.twitter)
+        //jon.saludar()
+        //console.log(Object.keys(jon))
+        //console.log(Object.values(jon))
+        let valor = jon.hasOwnProperty('nombre')
+        if(valor == true){
+            res.innerHTML = 'si existe la llave'
+        }else {
+            res.innerHTML = 'no existe la llave'
+        }
+        console.log(jon.hasOwnProperty('nacimiento'))
+        
+
+
+        
+        
         
     </script>
 </body>
