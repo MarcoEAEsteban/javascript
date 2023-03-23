@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>funciones</h1>
+   <script>
+    let frase = 'hola soy de peru y estoy con hambre'
+    frase.trim()
+    const palabras = ['brasil', 'hambre','de']
+    const nuevasPalabras = []
+
+    function armar(){
+      for(let pos in palabras){
+        let alternativas = palabras[pos]
+        let opcion = frase.includes(alternativas)
+        if(opcion == true){
+            nuevasPalabras.push('true')
+            
+        }
+        if(opcion == false){
+            nuevasPalabras.push('false')
+        } 
+      }
+      let objeto = nuevasPalabras.includes('true')
+      if(objeto == true){
+        console.log('encontrado')
+      }else{
+        console.log('no encontrado')
+      }
+
+    }
+    armar()
+    
+    
+   
+   </script>
+</body>
+</html>

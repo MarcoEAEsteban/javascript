@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Fundamentos JavaScript</h1>
+    <script>
+        const colores = ['rojo','verde','azul']
+        document.write(colores)
+
+        colores.forEach(function(valores, posciciones){
+            let lista = `<li id="${posciciones}">${valores}</li>`
+            document.write(lista)
+        })
+    
+        const jon = {
+            nombre: 'jon',
+            apellido: 'mircha',
+            edad: 35,
+            pasatiempos: ['correr', 'Hacer ejericio', 'Dar clases'],
+            contacto: {
+                email: 'jonmircha@gmail.com',
+                twitter: '@jonmircha',
+                movil: '52 155209847'
+            },
+            saludar: function(){
+                this.pasatiempos.forEach(function(valores,posciciones){
+                    let lista = `<li id="${posciciones}">${valores}</li>`
+                    document.write(lista)
+                })
+            },
+            listas:function(){
+                document.write(`<ol><li>${this.edad}</li></ol>`)
+            }
+
+        }
+        function clicar(){
+            jon.listas()
+        }
+        //console.log(jon['nombre'])
+        //console.log(jon.nombre)
+        //console.log(jon.pasatiempos[1])
+        //console.log(jon.contacto.twitter)
+        //jon.saludar()
+        //console.log(Object.keys(jon))
+        //console.log(Object.values(jon))
+        /*
+        let valor = jon.hasOwnProperty('nombre')
+        if(valor == true){
+            res.innerHTML = 'si existe la llave'
+        }else {
+            res.innerHTML = 'no existe la llave'
+        }
+        console.log(jon.hasOwnProperty('nacimiento'))
+        
+        let i = 1
+        console.log(i++)
+        i=1
+        console.log(++i)
+       
+       
+        let hora = 9
+        if(hora >= 0 && hora <=5){
+            console.log('dejame dormir')
+        }else if(hora < 12){
+            console.log('buenos dias')
+        }else if(hora < 19){
+            console.log('buenas tardes')
+        }else{
+            console.log('buenas noches')
+        }
+         
+        let dia = 0
+        switch (dia) {
+            case 0:
+                console.log('Domingo')
+                break;
+            case 1: 
+                console.log('Lunes')
+                break;
+            case 2: 
+                console.log('Martes')
+                break;
+            case 3: 
+                console.log('Miercoles')
+                break
+            case 4: 
+                console.log('Jueves')
+                break;
+            case 5: 
+                console.log('Lunes')
+                break;
+            case 6: 
+                console.log('Lunes')
+                break;
+            default:
+                console.log('EL dia no existe ')
+                break;
+        }
+        
+
+        let contador = 1
+        while(contador < 10){
+            console.log(contador)
+            contador++
+        }
+
+        do{
+            console.log(`${contador} ;)`)
+            contador++
+        }while(contador < 10)
+        
+       let arr = ['pelota','chommpa']
+       for (let index = 0; index < arr.length; index++) {
+        const element = arr[index];
+        console.log(`${index+1} : ${element}`)
+       }
+       */
+
+       const cadena = {
+        nombre:'jon',
+        apellido:'mircha'
+       }
+       for(const caracter in cadena){
+        console.log(cadena[caracter])
+       }
+
+       const maso = [1,2,3,4]
+       for(const caracter of maso){
+        console.log(caracter)
+       }
+
+    
+        
+    </script>
+</body>
+</html>
