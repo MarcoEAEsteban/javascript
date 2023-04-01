@@ -361,7 +361,7 @@ console.log(window)
 !function(){
     console.log('version Faceboork')
 }();
-*/
+
 import saludo, {PI} from "./constantes.js"
 import { aritmetica } from "./aritmetica.js"
 
@@ -370,4 +370,4 @@ console.log(PI)
 console.log('archivo principal')
 console.log(aritmetica.sumar(5,4))
 console.log(aritmetica.resta(5,4))
-
+*/
