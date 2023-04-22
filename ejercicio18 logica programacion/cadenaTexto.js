@@ -1,11 +1,11 @@
-const contarObejtos = () => {
+const contarObjetos = () => {
     const objetos = ['camisa', 'chompas', '12']
     for(let pos in objetos){
         let cosas = objetos[pos]
         console.log(cosas.length)
     }
 }
-//contarObejtos()
+//contarObjetos()
 const contarRopas = ()=>{
     const ropas = {
         color: ['rojos','azul','verde'],
@@ -221,4 +221,85 @@ const aplicarDescuento = (monto = undefined, descuento = 0)=>{
 //aplicarDescuento(100,50)
 
 
-//programa una funcion que dada una fecha determine cuantos años han pasado hasta el dia de hoy, pe.miFuncion(new date(1984,4,23))
+//programa una funcion que dada una fecha determine cuantos años han pasado hasta el dia de hoy, pe.miFuncion(new date(1984,4,23)) devolvera 35 años(en 2020)
+const calcularAnios = (fecha = undefined)=>{
+    if(fecha === undefined) return console.warn('No ingresaste la fecha')
+    if(!(fecha instanceof Date)) return console.error('El valor que ingresaste no es una fecha válida')
+
+    let hoyMenosFecha = new Date().getTime() - fecha.getTime()
+    aniosEnMS = 1000 * 60 * 60 * 24 * 365
+    aniosHumanos = Math.floor(hoyMenosFecha/aniosEnMS)
+
+    return(Math.sign(aniosHumanos ===-1))
+        ?console.info(`Faltan ${Math.abs(aniosHumanos)} años para el ${fecha.getFullYear()}.`)
+        :(Math.sign(aniosHumanos)===1)
+            ?console.info(`Han pasado ${aniosHumanos} años, desde ${fecha.getFullYear()}.`)
+            :console.info(`Estamos en el año actual ${fecha.getFullYear()}.`)
+}
+//calcularAnios(new Date(1989,9,18))
+
+
+//Programa una funcion que dada una cadena de texto cuente el numero de vocales y consonantes, pe.miFuncion('hola mundo) devuelva vocales 4, consonantes 5
+const contarLetras = (cadena = '')=>{
+    if(!cadena) return console.warn('No ingresaste una cadena de texto')
+    if (typeof cadena !== 'string') return console.error(`El valor '${cadena}' ingresado, NO es una cadena de texto`)
+
+    let vocales = 0,
+        consonantes = 0
+    cadena = cadena.toLocaleLowerCase()
+
+    for(let letra of cadena){
+        if(/[aeiouáéíóú]/.test(letra)) vocales++
+        if(/[bcdfghjklmnñpqrstvwxyz]/.test(letra)) consonantes++
+    }
+
+    return console.info({
+        cadena,
+        vocales,
+        consonantes
+    })
+}
+//contarLetras('llama')
+
+
+//Programa una funcion que valide que un texto sea un nombre valido, pe.miFuncion('Jonathan Mircha) devolvera verdadero
+const validarNombre = (nombre = '')=>{
+    if(!nombre) return console.warn('no ingresaste un nombre')
+    if(typeof nombre !== 'string') return console.error(`El valor "${nombre}" ingresadp, NO es una cadena de texto`)
+
+    let expReg = /^[A-Za-zÑñ\s]+$/g.test(nombre)
+
+    return(expReg)
+        ?console.info(`'${nombre}', es un nombre valido`)
+        :console.info(`'${nombre}', NO es un nombre valido`)
+}
+//validarNombre('marco enrique aucaruri esteban')
+
+
+//Programa una funcion que valide que un texto sea un email valido, pe.miFucion('jonmircha@gmail.com') devolvera verdadero
+const validarEmail = (email = '')=>{
+    if(!email) return console.warn('no ingresaste un nombre')
+    if(typeof email !== 'string') return console.error(`El valor "${email}" ingresadp, NO es una cadena de texto`)
+
+    let expReg = /[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})/i.test(email)
+
+    return(expReg)
+        ?console.info(`'${email}', es un email valido`)
+        :console.info(`'${email}', NO es un email valido`)
+}
+//validarEmail('jonmircha@gmail.com')
+
+
+//fucion 19,20
+const validarPatron = (cadena = '', patron = '')=>{
+    if(!cadena) return console.warn('No ingresaste la cadena de texto')
+    if(typeof cadena !== 'string') return console.error(`El valor "${cadena}" ingresado, NO es una cadena de texto`)
+    if(!patron) return console.warn('No ingresaste el patron')
+    if(!patron instanceof RegExp) return console.error(`El valor`)
+
+    let expreRegu = patron.test(cadena)
+
+    return (expreRegu)
+        ?console.info(`"${cadena}" , es valido`)
+        :console.info(`"${cadena}", NO es valido`)
+}
