@@ -291,11 +291,11 @@ const validarEmail = (email = '')=>{
 
 
 //fucion 19,20
-const validarPatron = (cadena = '', patron = '')=>{
+const validarPatron = (cadena = '', patron = undefined)=>{
     if(!cadena) return console.warn('No ingresaste la cadena de texto')
     if(typeof cadena !== 'string') return console.error(`El valor "${cadena}" ingresado, NO es una cadena de texto`)
-    if(!patron) return console.warn('No ingresaste el patron')
-    if(!patron instanceof RegExp) return console.error(`El valor`)
+    if(!patron === undefined) return console.warn('No ingresaste el patron')
+    if(!(patron instanceof RegExp)) return console.error(`El valor "${patron}" es invalido`)
 
     let expreRegu = patron.test(cadena)
 
@@ -303,3 +303,5 @@ const validarPatron = (cadena = '', patron = '')=>{
         ?console.info(`"${cadena}" , es valido`)
         :console.info(`"${cadena}", NO es valido`)
 }
+
+validarPatron('Jon Mircha',/^[A-Za-zÑñ\s]+$/g)
