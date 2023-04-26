@@ -303,5 +303,11 @@ const validarPatron = (cadena = '', patron = undefined)=>{
         ?console.info(`"${cadena}" , es valido`)
         :console.info(`"${cadena}", NO es valido`)
 }
+//validarPatron('Jon Mircha',/^[A-Za-zÑñ\s]+$/g)
 
-validarPatron('Jon Mircha',/^[A-Za-zÑñ\s]+$/g)
+
+//Programa una funcion que dado un array numerico devuelva otro array con los numeros elevados al cuadrado, pe.miFuncion([1,4,5]) devolvera [1,16,25]
+const numeros = {nombre:'marco', apellido:'aucaruri', holamundo(){}}
+
+
+
