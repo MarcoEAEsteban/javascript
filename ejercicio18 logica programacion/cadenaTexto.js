@@ -307,7 +307,20 @@ const validarPatron = (cadena = '', patron = undefined)=>{
 
 
 //Programa una funcion que dado un array numerico devuelva otro array con los numeros elevados al cuadrado, pe.miFuncion([1,4,5]) devolvera [1,16,25]
-const numeros = {nombre:'marco', apellido:'aucaruri', holamundo(){}}
+const devolverCuadrados = (arr = undefined)=>{
+    if(arr===undefined)return console.warn('No ingresaste un arreglo de números')
+    if(!(arr instanceof Array)) return console.error('El valor que ingresaste no es un arreglo')
+    if(arr.length === 0 ) return console.error('El arreglo esta vacío')
+
+    for(let num of arr){
+        if(typeof num !== 'number') return console.error(`El valor "${num}" ingresado, NO es un número`)
+    }
+
+    const newArray=arr.map(el => el+el-(el**2))
+
+    return console.info(`El arreglo original: ${arr}, \nArreglo elevado al cuadrado:${newArray}`)
+}
+devolverCuadrados([2,1,5])
 
 
 
