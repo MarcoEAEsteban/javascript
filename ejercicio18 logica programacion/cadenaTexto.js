@@ -316,11 +316,197 @@ const devolverCuadrados = (arr = undefined)=>{
         if(typeof num !== 'number') return console.error(`El valor "${num}" ingresado, NO es un número`)
     }
 
-    const newArray=arr.map(el => el+el-(el**2))
+    const newArray=arr.map(el => el*el)
 
     return console.info(`El arreglo original: ${arr}, \nArreglo elevado al cuadrado:${newArray}`)
 }
-devolverCuadrados([2,1,5])
+//devolverCuadrados([2,1,5])
 
 
+//programa una funcion que dado un array devuelva el numero mas alto y el mas bajo de dicho array , pe.miFuncion([1,4,5,99,-60]) devolvera [99,-60] 
+const arrayMinMax = (arr = undefined)=>{
+    if(arr===undefined)return console.warn('No ingresaste un arreglo de números')
+    if(!(arr instanceof Array)) return console.error('El valor que ingresaste no es un arreglo')
+    if(arr.length === 0 ) return console.error('El arreglo esta vacío')
 
+    for(let num of arr){
+        if(typeof num !== 'number') return console.error(`El valor "${num}" ingresado, NO es un número`)
+    }
+
+    return console.info(`Arreglo original: ${arr}\nValor mayor: ${Math.max(...arr)}\nValor menor: ${Math.min(...arr)}`)
+}
+//arrayMinMax([1,2,3,4,5])
+
+
+//programa una funcion que dado un array de numeros devuelva un objeto con 2 arreglos en el primero almacenara los numeros pares y en el segundo los numeros impares, pe.miFuncion([1,2,3,4,5,6,7,8,9,0]) devolvera {pares[2,4,6,8,0], impares[1,3,5,7,9]}
+const separarParesImpares = (arr = undefined)=>{
+    if(arr===undefined)return console.warn('No ingresaste un arreglo de números')
+    if(!(arr instanceof Array)) return console.error('El valor que ingresaste no es un arreglo')
+    if(arr.length === 0 ) return console.error('El arreglo esta vacío')
+
+    for(let num of arr){
+        if(typeof num !== 'number') return console.error(`El valor "${num}" ingresado, NO es un número`)
+    }
+    return console.info({
+        pares:arr.filter(num => num%2===0),
+        impares:arr.filter(num=>num%2===1)
+    })
+}
+//separarParesImpares([1,2,3,4,5,6,7,8,9,0])
+
+
+//programa una funcion que dado un arreglo de numeros devuelva un objeto con dos arreglos, el primero tendra los numeros ordenados en forma acendente y el segundo de forma descendente, pe.miFuncion([7,5,7,8,6]) devolvera {asc:[5,6,7,7,8], desc:[8,7,7,6,5]}
+const ordenarArreglo = (arr=undefined)=>{
+    if(arr===undefined)return console.warn('No ingresaste un arreglo de números')
+    if(!(arr instanceof Array)) return console.error('El valor que ingresaste no es un arreglo')
+    if(arr.length === 0 ) return console.error('El arreglo esta vacío')
+
+    for(let num of arr){
+        if(typeof num !== 'number') return console.error(`El valor "${num}" ingresado, NO es un número`)
+    }
+    return console.info({
+        arr,
+        asc: arr.map(el=>el).sort(),
+        desc:arr.map(el=>el).sort().reverse()
+    })
+}
+//ordenarArreglo([6,7,9,8,3,4,1])
+
+
+//Programa una funcion que dado un arreglo de elementos, eleimine los duplicados, pe.miFuncion(['x',10,'x',2,10,'10',true,true]) devolvera ['x',10,2,'10',true]
+const quitarDuplicados = (arr=undefined) => {
+    if(arr===undefined)return console.warn('No ingresaste un arreglo de números')
+    if(!(arr instanceof Array)) return console.error('El valor que ingresaste no es un arreglo')
+    if(arr.length === 0) return console.error('El arreglo esta vacío')
+    if(arr.length === 1) return console.warn('El arreglo debe tener porlomenos 2 elementos')
+    return console.info({
+        original:arr,
+        sinDuplicados:arr.filter((value,index,self)=>self.indexOf(value)===index)
+        //value==elemento del array ;index==indice del elemento; self==array en cuestion
+    })
+}
+//quitarDuplicados(['x',10,'x',2,10,'10',true,true])
+
+
+//programa una funcion que dado un arreglo de numeros obtenga el promedio, pe.promedio([9,8,7,6,5,4,3,2,1,0]), devolvera 4.5
+const promedio = (arr=undefined) =>{
+    if(arr===undefined)return console.warn('No ingresaste un arreglo de números')
+    if(!(arr instanceof Array)) return console.error('El valor que ingresaste no es un arreglo')
+    if(arr.length === 0 ) return console.error('El arreglo esta vacío')
+
+    for(let num of arr){
+        if(typeof num !== 'number') return console.error(`El valor "${num}" ingresado, NO es un número`)
+    }
+
+    return console.info(
+        arr.reduce((total,num,index,arr)=>{
+            total += num
+            if(index === arr.length-1){
+                return `El promedio de:\n(${arr.join('+')}) \nes: ${total/arr.length}`
+            }else{
+                return total
+            }
+        })
+    )
+}
+//promedio([1,2,3,4,5,6,7,8,9,0])
+
+
+/*Programa una clase llamada pelicula.
+La clase recibira un objeto al momento de instanciarce con los siguientes datos:id de la pelicula en IMDB, titulo, director, año de estreno, pais o paises de origen, generos y calificacion en IMBD.
+-Todos los datos del objeto son obligatorios
+-Valida que el id IMDB tenga 9 caracteres, los primeros 2 sean letras y los 7 restantes numeros
+-Valida que el titulo no rebase los 100 caracteres
+-Valida que el director no rebase los 50 caracteres
+-Valida que el año de estreno sea un numero entero de 4 digitos
+-Valida que el pais o paises sea introducido en forma de arreglo
+-Valida  que los generos sean introducidos en forma de arreglo
+-Valida que los generos introducidos esten dentro de los generos aceptados
+-Crea un metodo estatico que devuelva los generos aceptados
+-Valida que la calificacion se a un numero entre 0 y 10 pudiendo ser decimal de una posicion
+-Crea un metodo que devuelva toda la ficha tecnica de la pelicula
+-Apartir de un arreglo con la informacion de 3 peliculas genera 3 instancias de la clase de forma automatizada e imprime la ficha tecnica de cada pelicula
+
+* Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
+*/
+class Pelicula{
+    constructor({id,titulo,director,estreno,pais,generos,calificacion}){
+        this.id = id
+        this.titulo = titulo
+        this.director = director
+        this.estreno = estreno
+        this.pais = pais
+        this.generos = generos
+        this.calificacion = calificacion
+
+        this.validarIMDB(id)
+        this.validarTitulo(titulo)
+        this.validarDirector(director)
+        this.validarEstreno(estreno)
+    }
+
+    validarCadena(propiedad,valor){
+        if(!valor) return console.warn(`${propiedad} "${valor}" esta vacio`)
+
+        if(typeof valor !== 'string') return console.error(`${propiedad} "${valor}" ingresado, no es una cadena de texto`)
+
+        return true //validarCadena sera usado en todo lo que sea texto
+    }
+
+    validarLongitudCadena(propiedad, valor,longitud){
+        if(valor.length>longitud) return console.error(`${propiedad} "${valor}" excede el numero de caracteres permitiidos(${longitud})`)
+
+        return true
+    }
+
+    validarNumero(propiedad,valor){
+        if(!valor) return console.warn(`${propiedad} "${valor}" esta vacio`)
+
+        if(typeof valor !== 'number') return console.error(`${propiedad} "${valor}" ingresado, No es un número`)
+
+        return true
+    }
+
+    validarArreglo(propiedad,valor){
+        if(!valor) return console.warn(`${propiedad} '${valor}' esta vacío`)
+        if(!(valor instanceof Array)) return console.error(`${propiedad} '${valor}' ingresado no es un arreglo`)
+        if(valor.length===0) return console.error(`${propiedad} "${valor}" no tiene datos`)
+
+        for(let cadena of valor){
+            if(typeof cadena !=='string') return console.error(`El valor "${cadena}" ingresado, No es una cadena de texto`)
+        }
+        return true
+    }
+
+    validarIMDB (id){
+        if(this.validarCadena('IMDB id', id)){
+            if(!(/^([a-z]){2}([0-9]){7}$/.test(id))){
+                return console.error(`IMDB id "${id}" no es valido, debe contener 9 caracteres, los 2 primeros letras minusculas, los 7 restantes numeros`)
+            }
+        }
+    }
+
+    validarTitulo(titulo){
+        if(this.validarCadena('Titulo',titulo))
+            this.validarLongitudCadena('Titulo',titulo,100)
+    }
+
+    validarDirector(director){
+        if(this.validarCadena('Director',director))
+            this.validarLongitudCadena('Director',director,50)
+    }
+
+    validarEstreno(estreno){
+        if(this.validarNumero('Año de Estreno', estreno))
+            if(!(/^([0-9]){4}$/.test(estreno)))
+                return console.error(`Año de Estreno "${estreno}" no es valido, debe ser un numero de 4 digitos`)
+    }
+
+}
+
+const peli = new Pelicula({
+    id:'aa2345673',
+    titulo:'Título de la Película',
+    director:'Director de la Pelicula',
+    estreno: 1234
+})
