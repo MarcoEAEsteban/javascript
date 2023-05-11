@@ -427,7 +427,7 @@ La clase recibira un objeto al momento de instanciarce con los siguientes datos:
 -Crea un metodo que devuelva toda la ficha tecnica de la pelicula
 -Apartir de un arreglo con la informacion de 3 peliculas genera 3 instancias de la clase de forma automatizada e imprime la ficha tecnica de cada pelicula
 
-* Géneros Aceptados: Action, Adult, Adventure, Animation, Biography, Comedy, Crime, Documentary ,Drama, Family, Fantasy, Film Noir, Game-Show, History, Horror, Musical, Music, Mystery, News, Reality-TV, Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
+* Géneros Aceptados: "Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary" ,"Drama", "Family", "Fantasy", "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show", "Thriller","War", "Western".
 */
 class Pelicula{
     constructor({id,titulo,director,estreno,pais,generos,calificacion}){
@@ -443,6 +443,17 @@ class Pelicula{
         this.validarTitulo(titulo)
         this.validarDirector(director)
         this.validarEstreno(estreno)
+        this.validarPais(pais)
+        this.validarGeneros(generos)
+        this.validarCalificacion(calificacion)
+    }
+
+    static get listaGeneros(){
+        return ["Action", "Adult", "Adventure", "Animation", "Biography", "Comedy", "Crime", "Documentary" ,"Drama", "Family", "Fantasy", "Film Noir", "Game-Show", "History", "Horror", "Musical", "Music", "Mystery", "News", "Reality-TV", "Romance", "Sci-Fi", "Short", "Sport", "Talk-Show", "Thriller","War", "Western"]
+    }
+
+    static generosAceptados(){
+        return console.info(`Los géneros aceptados son: ${Pelicula.listaGeneros.join(", ")}`)
     }
 
     validarCadena(propiedad,valor){
@@ -502,11 +513,80 @@ class Pelicula{
                 return console.error(`Año de Estreno "${estreno}" no es valido, debe ser un numero de 4 digitos`)
     }
 
+    validarPais(pais){
+        this.validarArreglo('País', pais)
+    }
+
+    validarGeneros(generos){
+        if(this.validarArreglo('Generos', generos)){
+            for(let genero of generos){
+                if(!Pelicula.listaGeneros.includes(genero)){
+                    console.error(`Genero(s) incorrectos "${generos.join(", ")}"`)
+                    Pelicula.generosAceptados()
+                }
+            }
+        }
+
+    }
+
+    validarCalificacion(calificacion){
+        if(this.validarNumero('Calificacion', calificacion))
+            return (calificacion < 0 || calificacion > 10)
+                ? console.error(`La calificacion tiene que estar en un rango entre 0 y 10`)
+                :this.calificacion = calificacion.toFixed(1)
+    }
+
+    fichaTecnica(){
+        console.info(`Ficha Técnica:\nTítulo:"${this.titulo}",\nDirector:"${this.director}",\nAño:"${this.estreno}",\nPaís:"${this.pais.join("-")}",\nGéneros:"${this.generos.join(", ")}",\nCalificacíon:"${this.calificacion}",\nIMDB id:"${this.id}"`)
+    }
+
 }
 
+const misPelis = [
+    {
+        id: 'tt0758758',
+        titulo: 'Into the Wild',
+        director: 'Sean Penn',
+        estreno: 2007,
+        pais: ['USA'],
+        generos: ['Adventure','Biography', 'Drama'],
+        calificacion:8.1
+    },
+
+    {
+        id: 'tt0479143',
+        titulo: 'Rocky Balboa',
+        director: 'Sylvester Stallone',
+        estreno: 2006,
+        pais: ['USA'],
+        generos: ['Action', 'Drama', 'Sport'],
+        calificacion:7.1
+    },
+
+    {
+        id: 'tt0468569',
+        titulo: 'The Dark knight',
+        director: 'Christopher Nolan',
+        estreno: 2008,
+        pais: ['USA','UK'],
+        generos: ['Action','Crime','Drama'],
+        calificacion:9.0
+    },
+
+]
+
+misPelis.forEach(el =>new Pelicula(el).fichaTecnica())
+
+/*
 const peli = new Pelicula({
     id:'aa2345673',
     titulo:'Título de la Película',
     director:'Director de la Pelicula',
-    estreno: 1234
+    estreno: 1234,
+    pais: ['Perú'],
+    generos: ['Comedy'],
+    calificacion: 7.892
 })
+
+peli.fichaTecnica()
+*/
