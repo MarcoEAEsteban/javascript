@@ -152,7 +152,7 @@ console.log(wm.get(llave1))//trayendo el valor de la llave
 console.log(wm.get(llave2))
 
 wm.delete(llave2)//eliminando valores
-*/
+
 
 //const iterable = [1,2,3,4,5]//tipo de dato arreglo
 //const iterable = new Set([1,2,3,3,4,5])//tipo de dato set()
@@ -173,5 +173,13 @@ while(!nex.done){
     nex = iterador.next()
     
 }
+*/
 
-
+function* iterable(){
+    yield 'hola'
+    console.log('Hola consola')
+    yield 'hola 2'
+    console.log('Seguimos con mas instrucciones de nuestro codigo')
+    yield 'hola 3'
+    yield 'hola 4'
+}
