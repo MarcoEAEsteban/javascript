@@ -173,7 +173,7 @@ while(!nex.done){
     nex = iterador.next()
     
 }
-*/
+
 
 function* iterable(){
     yield 'hola'
@@ -183,3 +183,152 @@ function* iterable(){
     yield 'hola 3'
     yield 'hola 4'
 }
+let iterador = iterable()
+
+for(let y of iterador){
+    console.log(y)
+}
+
+const arr = [...iterable()]
+console.log(arr)
+
+
+function cuadrado(valor){
+    setTimeout(() => {
+        return console.log({valor,resultado:valor*valor})
+    }, Math.random()*1000);
+
+}
+
+function* generador(){
+    console.log('inicia Generador');
+    yield cuadrado(0);
+    yield cuadrado(1);
+    yield cuadrado(2);
+    yield cuadrado(3);
+    yield cuadrado(4);
+    yield cuadrado(5);
+    console.log('termina Generador');
+}
+let gen = generador()
+for(let g of gen){
+    console.log(g)
+}
+
+
+//OPERADOR PROXIES
+
+const persona = {
+    nombre:'',
+    apellido:'',
+    edad: 0 
+}
+
+const manejador = {
+    set(objeto,propiedad,valor){
+        if(Object.keys(objeto).indexOf(propiedad)===-1){
+            return console.error(`la propiedad '${propiedad}'no existe en el objeto`)
+        }
+        if(valor.length === 0 || valor === ' ' ){
+            return console.error(`El valor '${valor}' no puede estar vacio`)
+        }
+        if(
+            (propiedad ==='nombre'|| propiedad==='apellido') && !(/^[A-Za-zÑñÁáÉéÍíÓóÚú\s]+$/g.test(valor))
+        ){
+            return console.error(`la propiedad '${propiedad}' solo acepta letras y espacios en blanco`)
+        }
+    
+        
+        objeto[propiedad]= valor
+    }
+}
+
+const jon = new Proxy(persona,manejador)
+jon.nombre = 'jon'
+jon.apellido= 'mircha'
+jon.edad = 35
+//jon.twitter = '@mircha'
+console.log(jon)
+console.log(persona)
+
+
+//PROPIEDADES DINAMMICAS DE LOS OBJETOS
+
+let aleatorio = Math.round(Math.random()*100 + 5)
+
+const objUsuarios = {
+    propiedad: 'valor',
+    [`id_${aleatorio}`]: 'Valor Aleatorio'
+}
+console.log(objUsuarios)
+
+const usuarios = ['jon','irma','miguel','kala']
+usuarios.forEach((usuario,index)=> objUsuarios[`id_${index}`]=usuario)
+
+console.log(objUsuarios)
+
+//PALABRA RESERVADA THIS(this)
+
+console.log(this)
+console.log(window)
+console.log(this === window)
+
+this.nombre = 'contexto global'
+console.log(this.nombre)
+
+function imprimir(){
+    console.log(this.nombre)
+}
+
+{
+    //se le conose como bloque
+}
+imprimir()
+
+const obj = {
+    nombre:'contexto objeto',
+    imprimir:function(){
+        console.log(this.nombre)
+    }
+}
+obj.imprimir()
+
+const obj2 ={
+    nombre: 'contexto objeto2',
+    imprimir
+}
+obj2.imprimir()
+
+const obj3 = {
+    nombre: 'contexto objeto 3',
+    imprimir: ()=>{
+        console.log(this.nombre)
+    }
+}
+obj3.imprimir()
+
+//funcion constructora
+function Persona(nombre){
+    this.nombre = nombre
+    //return console.log(this.nombre)
+    //return function(){console.log(this.nombre)}
+    return ()=>{//con una funcion road se soluciona el problema del escopo
+        console.log(this.nombre)
+    }
+
+}
+ let jon = new Persona('Jon')
+ jon()
+ */
+
+ //antiguamente se usaba de una manera diferente
+function Persona(nombre){
+    const that = this
+    that.nombre = nombre
+
+    return function (){
+        console.log(that.nombre)
+    }
+}
+let jon = new Persona('Jon')
+jon()
